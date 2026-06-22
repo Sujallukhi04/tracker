@@ -9,7 +9,7 @@ This application is built in accordance with the **CausalFunnel Full Stack Engin
 ## 🚀 Live Demo & Deployed URLs
 * **Backend API**: [https://tracker-kiga.onrender.com](https://tracker-kiga.onrender.com)
 * **Frontend Dashboard**: *(Add your Vercel frontend URL here)*
-* **HTML Sandbox / Demo Storefront**: `https://<your-vercel-frontend-url>/demo.html`
+* **HTML Sandbox / Demo Storefront**: `https://causalfunnel-lemon.vercel.app/demo.html`
 
 ---
 
