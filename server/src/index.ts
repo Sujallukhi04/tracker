@@ -16,16 +16,18 @@ const corsOrigins = process.env.CORS_ORIGIN?.split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
 
-app.use(
-  cors({
-    origin: corsOrigins && corsOrigins.length > 0 ? corsOrigins : true,
-  })
-);
+const dashboardCors = cors({
+  origin: corsOrigins && corsOrigins.length > 0 ? corsOrigins : true,
+});
+
 app.use(express.json());
 
-app.use("/api/events", eventRoutes);
-app.use("/api/sessions", sessionRoutes);
-app.use("/api/heatmap", heatmapRoutes);
+// Tracker events endpoint must be accessible from any origin
+app.use("/api/events", cors({ origin: "*" }), eventRoutes);
+
+// Dashboard endpoints are restricted to configured client origins
+app.use("/api/sessions", dashboardCors, sessionRoutes);
+app.use("/api/heatmap", dashboardCors, heatmapRoutes);
 
 // Global Error Handler Middleware
 app.use(errorHandler);
